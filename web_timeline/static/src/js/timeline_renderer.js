@@ -363,7 +363,6 @@ odoo.define('web_timeline.TimelineRenderer', function (require) {
                 return events;
             }
             var groups = [];
-            groups.push({id: -1, content: _t('-')});
             _.each(events, function (event) {
                 var group_name = event[_.first(group_bys)];
                 if (group_name) {
@@ -382,6 +381,10 @@ odoo.define('web_timeline.TimelineRenderer', function (require) {
                     }
                 }
             });
+
+            if (groups.length == 0){
+                groups.push({id: -1, content: _t('-')});
+            }
             return groups;
         },
 
